@@ -11,6 +11,10 @@ void fetchWeatherForLocation(double latitude, double longitude, int fileCounter)
     pid_t pid = fork();
     if (pid == 0)
     {
+        // Print required details
+        std::cout << "Child PID: " << getpid() << " Parent PID: " << getppid() << std::endl;
+        std::cout << "UID: " << getuid() << " GID: " << getgid() << std::endl;
+
         std::string filename = "file" + std::to_string(fileCounter) + ".json";
         std::string url = "https://api.open-meteo.com/v1/forecast?latitude=" + std::to_string(latitude) +
                           "&longitude=" + std::to_string(longitude) + "&currentweather=True";
@@ -19,7 +23,7 @@ void fetchWeatherForLocation(double latitude, double longitude, int fileCounter)
         perror("execlp");
         exit(1);
     }
-    else if (pid < 0)
+    else if (pid < 0) // Forking failed
     {
         perror("fork");
         exit(1);
