@@ -31,15 +31,14 @@ make all
 ### WeatherSerialFetcher
 To use the `WeatherSerialFetcher`:
 
-./WeatherSerialFetcher input.txt
-Replace `input.txt` with the file containing your list of latitude and longitude coordinates.
+- g++ -o serial serial.cpp
+- ./serial
 
 ### WeatherParallelFetcher
-
 To use the `WeatherParallelFetcher`:
-./WeatherParallelFetcher input.txt
 
-Again, replace `input.txt` with your desired input file of coordinates.
+- g++ -o parallel parallel.cpp
+- ./parallel
 
 ## Performance
 
